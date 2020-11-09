@@ -20,7 +20,7 @@ Available Commands:
 Mandatory flags:
   -d, --domain string     FQ domain name (e.g. contoso.com or localhost)
   -u, --username string   Username
-  -p, --password string   Password
+  -p, --password string   Password plaintext or NT hash
 
 Optional flags:
       --delay int         Delay in ms between each attempt- single thread if set

@@ -25,7 +25,7 @@ func Execute() {
 func init() {
 	rootCmd.PersistentFlags().StringVarP(&domain, "domain", "d", "", "FQ domain name (e.g. contoso.com or localhost)")
   rootCmd.PersistentFlags().StringVarP(&username, "username", "u", "", "Usernameee")
-  rootCmd.PersistentFlags().StringVarP(&password, "password", "p", "", "Password")
+  rootCmd.PersistentFlags().StringVarP(&password, "password", "p", "", "Password plaintext or NT hash")
 
 //rootCmd.PersistentFlags().StringVar(&domainController, "dc", "", "Tlo")
 //rootCmd.PersistentFlags().StringVarP(&logFileName, "output", "o", "", "File to write logs to. Optional.")
