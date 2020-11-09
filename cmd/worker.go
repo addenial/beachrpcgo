@@ -66,7 +66,17 @@ func testTargetLA(ctx context.Context, target string) {
 		res1 := scanner.Text()
 		newline := fmt.Sprintf("%s,%s", target, strings.Replace(res1, "\\", ",", 1 ))
 		//fmt.Println(newline)
-		logger.Log.Notice(newline)
+		noize := "E_md4hash wrapper called"
+		noize2 := "HASH PASS: Substituting user supplied NTLM HASH"
+		if strings.Contains(newline, noize) {
+			        //fmt.Println("Yes")
+							continue
+		} else if strings.Contains(newline, noize2) {
+						//fmt.Println("yes")
+						continue
+		} else {}
+    logger.Log.Notice(newline)
+
 
 		// if logging out to csv file
 		if logZout != "" {
@@ -145,7 +155,21 @@ func testTargetRDP(ctx context.Context, target string) {
 		res1 := scanner.Text()
 		newline := fmt.Sprintf("%s,%s", target, strings.Replace(res1, "\\", ",", 1 ))
 		//fmt.Println(newline)
-		logger.Log.Notice(newline)
+
+		// cleanup code to remove noize from pth binary
+		// if newline contains below, skip and dont display:
+		noize := "E_md4hash wrapper called"
+		noize2 := "HASH PASS: Substituting user supplied NTLM HASH"
+		//fmt.Println(newline)
+		if strings.Contains(newline, noize) {
+			        //fmt.Println("Yes")
+							continue
+		} else if strings.Contains(newline, noize2) {
+						//fmt.Println("yes")
+						continue
+		} else {}
+    logger.Log.Notice(newline)
+
 
 		// if logging out to csv file
 		if logZout != "" {
