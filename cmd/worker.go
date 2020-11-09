@@ -35,9 +35,10 @@ func testTargetLA(ctx context.Context, target string) {
 	logger.Log.Debug("* testing host =>", target)
 
 	//userpass := "user2%Password123"
-	userpass := fmt.Sprintf("%v%%%v", username, password)
+	//userpass := "user2%aad3b435b51404eeaad3b435b51404ee:NTLM
+	userpass := fmt.Sprintf("%v%%aad3b435b51404eeaad3b435b51404ee:%v", username, ntlm)
 
-	cmdZ := exec.Command("net", "rpc", "group", "members", "administrators", "-U", userpass, "-S", target)
+	cmdZ := exec.Command("pth-net", "rpc", "group", "members", "administrators", "-U", userpass, "-S", target)
 	outZ, errZ := cmdZ.CombinedOutput()
 	if errZ != nil {
 		logger.Log.Debugf("  unresponsive... %s", target)
@@ -65,7 +66,7 @@ func testTargetLA(ctx context.Context, target string) {
 		res1 := scanner.Text()
 		newline := fmt.Sprintf("%s,%s", target, strings.Replace(res1, "\\", ",", 1 ))
 		//fmt.Println(newline)
-		logger.Log.Info(newline)
+		logger.Log.Notice(newline)
 
 		// if logging out to csv file
 		if logZout != "" {
@@ -129,9 +130,10 @@ func makeEnumWorker2(ctx context.Context, targets <-chan string, wg *sync.WaitGr
 func testTargetRDP(ctx context.Context, target string) {
 	atomic.AddInt32(&counter, 1)
 
-	userpass := fmt.Sprintf("%v%%%v", username, password)
+	userpass := fmt.Sprintf("%v%%aad3b435b51404eeaad3b435b51404ee:%v", username, ntlm)
+
 	logger.Log.Debug("* testing host =>", target)
-	cmdZ := exec.Command("net", "rpc", "group", "members", "Remote Desktop Users", "-U", userpass, "-S", target)
+	cmdZ := exec.Command("pth-net", "rpc", "group", "members", "Remote Desktop Users", "-U", userpass, "-S", target)
 	outZ, errZ := cmdZ.CombinedOutput()
 	if errZ != nil {
 		logger.Log.Debugf("  unresponsive... %s", target)
@@ -143,7 +145,7 @@ func testTargetRDP(ctx context.Context, target string) {
 		res1 := scanner.Text()
 		newline := fmt.Sprintf("%s,%s", target, strings.Replace(res1, "\\", ",", 1 ))
 		//fmt.Println(newline)
-		logger.Log.Info(newline)
+		logger.Log.Notice(newline)
 
 		// if logging out to csv file
 		if logZout != "" {
