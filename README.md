@@ -54,9 +54,23 @@ go run main.go localadmins -d localhost -u User1 -p Password123 445.open -o outl
 ```
 go run main.go rdpmembers -d localhost -u User2 -p Password123 -o outrdp.csv -v 445.open
 ```
+
+example tool output, results in CSV format [IP, domain, username]
+```
+Version: dev (n/a) - 11/10/99 - authdd
+
+2020/11/10 16:38:20 >  Using ->($$>(:0 -->
+2020/11/10 16:38:20 >  Domain:   localhost
+2020/11/10 16:38:20 >  User:     User1
+2020/11/10 16:38:20 >  Pass:     Password123
+2020/11/10 16:38:20 >  NT Hash:  58a478135a93ac3bf058a5ea0e8fdb71
+2020/11/10 16:38:21 >  10.0.0.104,DESKTOP-MSH9,Administrator
+2020/11/10 16:38:21 >  10.0.0.104,DESKTOP-MSH9,user1
+2020/11/10 16:38:21 >  10.0.0.104,DESKTOP-MSH9,user2
+2020/11/10 16:38:21 >  Done! in 0.420 seconds
+```
+Parse output to show IPs of machines where "Domain Users" group can RDP:
 `cat outrdp.csv | grep Domain\ Users`
-
-
 
 # compile instructions
 to download golang environment in debian linux `sudo apt install golang`
