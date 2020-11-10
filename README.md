@@ -75,9 +75,7 @@ To download the patched pth kali tools which use password hashes as authenticati
 Latest compiled version can be downloaded from releases [here](https://github.com/addenial/beachrpcgo/releases)
 
 ```
-wget https://github.com/addenial/beachrpcgo/releases/download/dev_v.net-x84_64_Linux/beachrpcgo-v.net-x84_64_Linux -O beachrpcgo
-
-wget https://github.com/addenial/beachrpcgo/releases/download/dev_v.pth-net-x84_64_Linux/beachrpcgo-v.pth-net-x84-64_Linux  -O beachrpcgo
+wget https://github.com/addenial/beachrpcgo/releases/download/latest/beachrpcgo -O beachrpcgo
 
 chmod +x beachrpcgo
 ./beachrpcgo help
