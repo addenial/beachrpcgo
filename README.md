@@ -71,6 +71,17 @@ to specify binary architecture when compiling
 beachrpcgo has a dependency on `net` (tool for administration of Samba and remote CIFS servers) and `pth-net`. tested on kali linux.
 To download the patched pth kali tools which use password hashes as authentication input `apt install passing-the-hash -y`
 
+# pre-build releases
+Latest compiled version can be downloaded from releases [here](https://github.com/addenial/beachrpcgo/releases)
+
+```
+wget https://github.com/addenial/beachrpcgo/releases/download/dev_v.net-x84_64_Linux/beachrpcgo-v.net-x84_64_Linux -O beachrpcgo
+
+wget https://github.com/addenial/beachrpcgo/releases/download/dev_v.pth-net-x84_64_Linux/beachrpcgo-v.pth-net-x84-64_Linux  -O beachrpcgo
+
+chmod +x beachrpcgo
+./beachrpcgo help
+```
 # reference
 versja edukacyjna golang
 goroutine lekkie nici przez środowisko uruchomieniowe Go
