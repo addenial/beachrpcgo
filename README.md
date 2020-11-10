@@ -61,7 +61,7 @@ go run main.go rdpmembers -d localhost -u User2 -p Password123 -o outrdp.csv -v 
 # compile instructions
 to download golang environment in debian linux `sudo apt install golang`
 
-compile without including debugging (recuse binary size by 30%~~ish)
+compile without including debugging (reduces the binary size by 30%~~ish)
 `go build -ldflags "-w -s" -o beachrpcgo main.go`
 `./beachrpcgo -h`
 

