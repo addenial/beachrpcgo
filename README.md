@@ -3,6 +3,13 @@ Reconnaissance tool designed to assist with discovery of potential foothold host
 
 Tool will perform rapid discovery of local group memberships across Windows AD-joined systems. Requires valid active directory credentials- userland.
 
+
+
+beachrpcgo -- golang tool that wraps around Linux "net" and "pth-net" binaries. Through RPC calls (SAMRPC protocol over SMB TCP 445) tool allows a low privileged user to enumerate the users and group memberships from the local Security Accounts Manager (SAM) database. Supports local and domain authentication. 
+
+https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/network-access-restrict-clients-allowed-to-make-remote-sam-calls
+
+
 # usage
 
 ```
